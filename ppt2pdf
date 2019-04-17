@@ -35,5 +35,3 @@ libreoffice --headless --invisible --convert-to pdf *.ppt
 # Find the Process ID for soffice.bin running instance
 # and kill it
 ###########################################
-
-ps -A | grep soffice | awk '{ print soffice }' | while read pid; do echo $pid; kill -s 9 $pid;  done
