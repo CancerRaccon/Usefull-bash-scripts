@@ -1,0 +1,15 @@
+# Author: SC
+#-----------------------------
+# Install a shell script
+# Usage: install-script <file>
+#-----------------------------
+#!/bin/bash
+
+
+RED='\033[1;31m'
+
+sudo mv $1 /usr/local/sbin/$1
+sudo chmod a+rwx /usr/local/sbin/$1
+
+echo -e "${RED}Script moved to /usr/local/sbin/"
+echo -e "${RED}Script now is executable"

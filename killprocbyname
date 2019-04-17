@@ -1,0 +1,5 @@
+# Author: SC
+#-------------------
+#!/bin/bash
+
+ps -A | grep $1 | awk '{ print $1 }' | while read pid; do echo $pid; kill -s 9 $pid;  done

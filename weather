@@ -1,0 +1,86 @@
+#!/bin/bash
+#
+# Author: SC
+#
+# Usage: - weather <location>
+#        - weather -i (for help page from official source)
+#        - weather -m (for Munich)
+##############################
+#To make this script executable at any time:
+# 1. Open the terminal in the directory that this script
+#    is located
+# 2. Run the next two commands:
+#        - sudo mv weather /usr/local/sbin/weather
+#        - sudo chmod a+rwx /usr/local/sbin/weather
+##############################
+# Credit to Igor Chubin
+# More info at: https://github.com/chubin/wttr.in
+#
+##############################
+
+
+
+CY='\033[;36m'  # Cyan
+NC='033[;0m'    # No Color
+loc=$1
+
+echo -e ${CY}
+
+display_usage() {
+  echo  "Author: SC"
+  echo
+  echo  "Usage : -  weather <location>"
+  echo  "        -  weather -h (to print this list)"
+  echo  "        -  weather -i (for help page from official source)"
+  echo  "        -  weather -m (for Munich)"
+  echo  "        -  weather -g (for Galatsi)"
+  echo  "        -  weather -a (for Apollon, Naxos)"
+  echo
+
+
+  echo  "|------------------------------------------------------------|"
+  echo  "| Credit for the app goes to Igor Chubin                     |"
+  echo  "| ( https://twitter.com/igor_chubin )                        |"
+  echo  "|                                                            |"
+  echo  "| More info about the app at:                                |"
+  echo  "| https://github.com/chubin/wttr.in                          |"
+  echo  "|                                                            |"
+  echo  "|------------------------------------------------------------|"
+}
+
+#if [ "$loc" = "-i" ]; then
+#    curl wttr.in/:help
+#elif [ "$loc" = "-m" ]; then
+#    curl wttr.in/munich
+#elif [ "$loc" = "-g" ]; then
+#    curl wttr.in/galatsi
+#elif [ "$loc" = "-a" ]; then
+#    curl wttr.in/Apollon
+#elif [ "$loc" = "-h" ] || [ "$loc" = "--help" ]; then
+#    display_usage
+#    exit
+#else
+#    curl wttr.in/"$loc"
+#fi
+
+case $loc in
+  -i )
+      curl wttr.in/:help
+      ;;
+  -m )
+      curl wttr.in/Munich
+      ;;
+  -g )
+      curl wttr.in/Galatsi
+      ;;
+  -a )
+      curl wttr.in/Apollon
+      ;;
+  -h|--help )
+      display_usage
+      exit
+      ;;
+  * )
+      curl wttr.in/"$loc"
+      ;;
+esac

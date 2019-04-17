@@ -1,0 +1,39 @@
+#!/bash/script
+###########################################
+# Author: SC
+# Date:   28/01/2019
+###########################################
+# Usage:  - cd to the directory you have the
+#           .ppt files saved
+#         - run : ppt2pdf
+#------------------------------------------
+# This will create a .pdf file for every
+# .ppt file within the directory that the
+# command is executed
+###########################################
+
+libreoffice --headless --invisible --convert-to pdf *.ppt
+
+###########################################
+# --headless
+# Starts in "headless mode", which allows using the
+# application without a user interface.
+# This special mode can be used when the application
+# is controlled by external clients via the API...
+# It implies --invisible and strictly ignores any
+# GUI environment.
+#--------------------------------------------
+# --invisible
+# Starts in invisible mode.
+# Neither the start-up logo nor the initial program
+# window will be visible. LO can be controlled and documents
+# and dialogs can be opened via the API.
+# When started with this parameter, it can only be quit using
+# the taskmanager (Windows) or the kill command (UNIX based systems).
+#---------------------------------------------
+#
+# Find the Process ID for soffice.bin running instance
+# and kill it
+###########################################
+
+ps -A | grep soffice | awk '{ print soffice }' | while read pid; do echo $pid; kill -s 9 $pid;  done

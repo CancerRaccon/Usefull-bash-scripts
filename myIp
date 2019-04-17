@@ -1,0 +1,18 @@
+# Author: SC
+#--------------------------------------------------------
+#!/bin/bash
+
+me=${0##*/}
+echo $me
+
+CY='\033[0;36m'
+NC='\033[0m'
+
+myIp6=`curl -s icanhazip.com`
+myIp4=`curl -s ipecho.net/plain`
+inet=`hostname -I | awk '{print $1}'`
+
+echo "myIps are:"
+echo -e "  IP4  = "${CY}"$myIp4"${NC}
+echo -e "  IP6  = "${CY}"$myIp6"${NC}
+echo -e "  Inet = "${CY}"$inet"${NC}

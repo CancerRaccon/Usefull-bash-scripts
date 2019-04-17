@@ -1,0 +1,8 @@
+# Author: SC
+#-------------------
+# Refresh Desktop UI
+#-------------------
+#!/bin/bash
+
+
+gnome-shell --replace & disown
